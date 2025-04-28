@@ -7,6 +7,7 @@ public abstract class Calculations {
     private List<Calculations> calculations = new ArrayList<>();
 
     abstract Double calc();
+    abstract Double calc(Double num);
     abstract String process();
     abstract String details();
 

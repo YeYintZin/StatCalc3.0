@@ -18,6 +18,15 @@ public class Factorial extends Calculations {
     }
 
     @Override
+    Double calc(Double num) {
+        Double n = num;
+        for (double i = n - 1; i > 1; i--) {
+            n *= i;
+        }
+        return n;
+    }
+
+    @Override
     String process() {
         Double n = this.getParameters().getFirst();
         String s = n.toString();

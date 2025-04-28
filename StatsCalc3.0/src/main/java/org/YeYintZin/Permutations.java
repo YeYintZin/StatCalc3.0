@@ -11,19 +11,29 @@ public class Permutations extends Calculations {
     @Override
     Double calc() {
         Calculations numer = new Factorial(this.getParameters());
-        FacDifference demon = new FacDifference(this.getParameters());
+        Calculations denom = new Factorial(this.getParameters());
         this.getCalculations().add(numer);
-        this.getCalculations().add(demon);
-        return numer.calc() / demon.calc();
+        this.getCalculations().add(denom);
+        return numer.calc() / denom.calc(this.getParameters().getFirst() - this.getParameters().get(1));
+    }
+
+    @Override
+    Double calc(Double num) {
+        Calculations numer = new Factorial(this.getParameters());
+        Calculations denom = new Factorial(this.getParameters());
+        this.getCalculations().add(numer);
+        this.getCalculations().add(denom);
+        return numer.calc() / denom.calc(this.getParameters().getFirst() - this.getParameters().get(1));
     }
 
     @Override
     String process() {
-        return "Computes" + this.getParameters().getFirst().intValue()
+        return "Computes " + this.getParameters().getFirst().intValue()
                 + "!" + "\n"
-                + "divides this by "
-                + this.getParameters().getFirst().intValue() + "! - "
-                + this.getParameters().get(1).intValue() + "!";
+                + "divided by ("
+                + this.getParameters().getFirst().intValue() + " - "
+                + this.getParameters().get(1).intValue() + ")!\n"
+                + this.calc();
     }
 
     @Override
