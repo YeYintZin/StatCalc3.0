@@ -29,13 +29,14 @@ public class Factorial extends Calculations {
 
     @Override
     String details() {
-        return "Multiplies n by n - 1, until n - 1 = 1. " +
+        return "n!" + "\n" +
+                "Multiplies n by n - 1, until n - 1 = 1. " +
                 "\n" +
                 "No implementation of Gamma Function, only Integers.";
     }
 
     @Override
     public String toString() {
-        return this.getParameters().getFirst() + "! = " + calc();
+        return this.getParameters().getFirst().intValue() + "! = " + calc();
     }
 }

@@ -4,6 +4,7 @@ import java.util.*;
 public abstract class Calculations {
     private List<Double> parameters;
     private Integer parametersSize;
+    private List<Calculations> calculations = new ArrayList<>();
 
     abstract Double calc();
     abstract String process();
@@ -39,5 +40,13 @@ public abstract class Calculations {
 
     public void setParametersSize(Integer parametersSize) {
         this.parametersSize = parametersSize;
+    }
+
+    public List<Calculations> getCalculations() {
+        return calculations;
+    }
+
+    public void setCalculations(List<Calculations> calculations) {
+        this.calculations = calculations;
     }
 }
