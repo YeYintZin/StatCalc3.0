@@ -10,6 +10,9 @@ public class Combinations extends Calculations {
 
     @Override
     Double calc() {
+        if (this.getParameters().get(1) == 0) {
+            return 1.0;
+        }
         Calculations perm = new Permutations(this.getParameters());
         Calculations comb = new Factorial(this.getParameters());
         return (1 / comb.calc(this.getParameters().get(1))) * perm.calc();
@@ -17,17 +20,25 @@ public class Combinations extends Calculations {
 
     @Override
     Double calc(Double num) {
-        return 0.0;
+        return null;
     }
 
     @Override
     String process() {
-        return "";
+        return "Computes " + this.getParameters().getFirst().intValue()
+                + "!" + "\n"
+                + "divided by ("
+                + this.getParameters().getFirst().intValue() + " - "
+                + this.getParameters().get(1).intValue() + ")!"
+                + "1 / " + this.getParameters().get(1) + "\n"
+                + this.calc();
     }
 
     @Override
     String details() {
-        return "";
+        return "nCr" + "\n" +
+                "Returns Permutation, the amount of combinations possible, with order mattering\n" +
+                "n!/r!(n-r)!";
     }
 
     @Override

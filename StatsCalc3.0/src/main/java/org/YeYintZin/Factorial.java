@@ -10,6 +10,9 @@ public class Factorial extends Calculations {
 
     @Override
     Double calc() {
+        if (this.getParameters().getFirst() == 0.0) {
+            return 1.0;
+        }
         Double n = this.getParameters().getFirst();
         for (double i = n - 1; i > 1; i--) {
             n *= i;

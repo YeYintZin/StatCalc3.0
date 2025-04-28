@@ -13,6 +13,7 @@ public abstract class Calculations {
 
     public Calculations(List<Double> parameters) {
         this.parameters = parameters;
+        this.parametersSize = parameters.size();
     }
 
     @Override

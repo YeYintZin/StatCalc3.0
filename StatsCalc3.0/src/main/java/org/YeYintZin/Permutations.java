@@ -19,17 +19,13 @@ public class Permutations extends Calculations {
 
     @Override
     Double calc(Double num) {
-        Calculations numer = new Factorial(this.getParameters());
-        Calculations denom = new Factorial(this.getParameters());
-        this.getCalculations().add(numer);
-        this.getCalculations().add(denom);
-        return numer.calc() / denom.calc(this.getParameters().getFirst() - this.getParameters().get(1));
+        return null;
     }
 
     @Override
     String process() {
-        return "Computes " + this.getParameters().getFirst().intValue()
-                + "!" + "\n"
+        return "Computes "
+                + this.getParameters().getFirst().intValue() + "!" + "\n"
                 + "divided by ("
                 + this.getParameters().getFirst().intValue() + " - "
                 + this.getParameters().get(1).intValue() + ")!\n"
