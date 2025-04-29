@@ -6,10 +6,10 @@ public abstract class Calculations {
     private Integer parametersSize;
     private List<Calculations> calculations = new ArrayList<>();
 
-    abstract Double calc();
+    public abstract Double calc();
     abstract Double calc(Double num);
-    abstract String process();
-    abstract String details();
+    public abstract String process();
+    public abstract String details();
 
     public Calculations(List<Double> parameters) {
         this.parameters = parameters;

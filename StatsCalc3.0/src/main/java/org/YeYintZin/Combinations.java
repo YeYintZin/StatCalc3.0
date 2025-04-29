@@ -9,7 +9,7 @@ public class Combinations extends Calculations {
     }
 
     @Override
-    Double calc() {
+    public Double calc() {
         if (this.getParameters().get(1) == 0) {
             return 1.0;
         }
@@ -24,7 +24,7 @@ public class Combinations extends Calculations {
     }
 
     @Override
-    String process() {
+    public String process() {
         return "Computes " + this.getParameters().getFirst().intValue()
                 + "!" + "\n"
                 + "divided by ("
@@ -35,7 +35,7 @@ public class Combinations extends Calculations {
     }
 
     @Override
-    String details() {
+    public String details() {
         return "nCr" + "\n" +
                 "Returns Permutation, the amount of combinations possible, with order mattering\n" +
                 "n!/r!(n-r)!";

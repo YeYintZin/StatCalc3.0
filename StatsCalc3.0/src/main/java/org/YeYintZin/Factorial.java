@@ -9,7 +9,7 @@ public class Factorial extends Calculations {
     }
 
     @Override
-    Double calc() {
+    public Double calc() {
         if (this.getParameters().getFirst() == 0.0) {
             return 1.0;
         }
@@ -22,6 +22,9 @@ public class Factorial extends Calculations {
 
     @Override
     Double calc(Double num) {
+        if (num == 0) {
+            return 1.0;
+        }
         Double n = num;
         for (double i = n - 1; i > 1; i--) {
             n *= i;
@@ -30,17 +33,20 @@ public class Factorial extends Calculations {
     }
 
     @Override
-    String process() {
-        Double n = this.getParameters().getFirst();
+    public String process() {
+        if (calc() == 1) {
+            return "0! = 1";
+        }
+        Integer n = this.getParameters().getFirst().intValue();
         String s = n.toString();
-        for (double i = n - 1; i < 1; i++) {
-            s += " * " + n;
+        for (int i = n - 1; i > 0; i--) {
+            s += " * " + i;
         }
         return s;
     }
 
     @Override
-    String details() {
+    public String details() {
         return "n!" + "\n" +
                 "Multiplies n by n - 1, until n - 1 = 1. " +
                 "\n" +

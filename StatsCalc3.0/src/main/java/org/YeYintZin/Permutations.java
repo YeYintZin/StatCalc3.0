@@ -9,7 +9,7 @@ public class Permutations extends Calculations {
     }
 
     @Override
-    Double calc() {
+    public Double calc() {
         Calculations numer = new Factorial(this.getParameters());
         Calculations denom = new Factorial(this.getParameters());
         this.getCalculations().add(numer);
@@ -23,7 +23,7 @@ public class Permutations extends Calculations {
     }
 
     @Override
-    String process() {
+    public String process() {
         return "Computes "
                 + this.getParameters().getFirst().intValue() + "!" + "\n"
                 + "divided by ("
@@ -33,7 +33,7 @@ public class Permutations extends Calculations {
     }
 
     @Override
-    String details() {
+    public String details() {
         return "nPr" + "\n" +
                 "Returns Permutation, the amount of combinations possible, without order mattering\n" +
                 "n!/(n-r)!";

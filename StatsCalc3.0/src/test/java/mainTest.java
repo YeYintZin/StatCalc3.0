@@ -1,0 +1,47 @@
+import org.YeYintZin.Calculations;
+import org.YeYintZin.Factorial;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import java.util.*;
+
+public class mainTest {
+
+    @Test
+    public void testFactorialCalc() {
+        List<Double> pars = new ArrayList<>();
+        pars.add(5.0);
+        Calculations fac = new Factorial(pars);
+        Assertions.assertEquals(120, (double) fac.calc());
+    }
+
+    @Test
+    public void testFactorialCalc0() {
+        List<Double> pars = new ArrayList<>();
+        pars.add(0.0);
+        Calculations fac = new Factorial(pars);
+        Assertions.assertEquals(1, fac.calc());
+    }
+
+    @Test
+    public void testFactorialProcess() {
+        List<Double> pars = new ArrayList<>();
+        pars.add(5.0);
+        Calculations fac = new Factorial(pars);
+        String expected = "5 * 4 * 3 * 2 * 1";
+        String result = fac.process();
+        Assertions.assertEquals(expected, result);
+    }
+
+    @Test
+    public void testFactorialDetails() {
+        List<Double> pars = new ArrayList<>();
+        pars.add(5.0);
+        Calculations fac = new Factorial(pars);
+        String expected = "n!" + "\n" +
+                "Multiplies n by n - 1, until n - 1 = 1. " +
+                "\n" +
+                "No implementation of Gamma Function, only Integers.";
+        String result = fac.details();
+        Assertions.assertEquals(expected, result);
+    }
+}
