@@ -6,16 +6,17 @@ public abstract class Calculations {
     private List<Calculations> calculations = new ArrayList<>();
     private boolean rawUse = false;
 
-    public abstract Double calc();
-    abstract Double calc(Double num);
+    public abstract double calc();
+    abstract double calc(Double num);
     public abstract String process();
     public abstract String explain();
+    public abstract String allCalc();
 
     public Calculations(List<Double> parameters) {
         this.parameters = parameters;
     }
 
-    public Double numAt(int idx) {
+    public double numAt(int idx) {
         return parameters.get(idx);
     }
 

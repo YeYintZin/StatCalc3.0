@@ -8,24 +8,24 @@ public class Factorial extends Calculations {
     }
 
     @Override
-    public Double calc() {
+    public double calc() {
         if (numAt(0) == 0) {
-            return 1.0;
+            return 1;
         }
         if (numAt(0) % 1 != 0) {
-            return -1.0;
+            return -1;
         }
-        int n = numAt(0).intValue();
-        for (int i = n - 1; i > 1; i--) {
+        double n = numAt(0);
+        for (double i = n - 1; i > 1; i--) {
             n *= i;
         }
-        return (double) n;
+        return n;
     }
 
     @Override
-    Double calc(Double num) {
+    double calc(Double num) {
         if (num == 0) {
-            return 1.0;
+            return 1;
         }
         int n = num.intValue();
         for (int i = n - 1; i > 1; i--) {
@@ -33,7 +33,7 @@ public class Factorial extends Calculations {
         }
         setRawUse(true);
         getParameters().add(num);
-        return (double) n;
+        return n;
     }
 
     @Override
@@ -45,22 +45,31 @@ public class Factorial extends Calculations {
             return "Cannot ! a non integer.";
         }
         int n;
+        double result;
         if (isRawUse()) {
-            n = numAt(2).intValue();
+            n = (int) numAt(2);
+            result = calc(numAt(2));
         } else {
-            n = numAt(0).intValue();
+            n = (int) numAt(0);
+            result = calc();
         }
-        String s = Integer.toString(n);
+        StringBuilder s = new StringBuilder();
+        s.append(n);
         for (int i = n - 1; i > 0; i--) {
-            s += " * " + i;
+            s.append(" * ").append(i);
         }
-        return s;
+        return s + " = " + (int) result;
+    }
+
+    @Override
+    public String allCalc() {
+        return process() + "\n";
     }
 
     @Override
     public String explain() {
-        return "n!" + "\n" +
-                "Multiplies n by n - 1, until n - 1 = 1. " +
+        return "n!," +
+                " multiplication of n by n - 1, until n - 1 = 1. " +
                 "\n" +
                 "No implementation of Gamma Function, only Integers.";
     }
@@ -68,8 +77,8 @@ public class Factorial extends Calculations {
     @Override
     public String toString() {
         if (isRawUse()) {
-            return numAt(2).intValue() + "! = " + calc(numAt(2));
+            return numAt(2) + "! = " + calc(numAt(2));
         }
-        return numAt(0).intValue() + "! = " + calc();
+        return numAt(0) + "! = " + calc();
     }
 }

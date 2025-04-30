@@ -9,41 +9,53 @@ public class Combinations extends Calculations {
     }
 
     @Override
-    public Double calc() {
-        if (this.getParameters().get(1) == 0) {
+    public double calc() {
+        if (numAt(1) == 0) {
             return 1.0;
         }
         Calculations perm = new Permutations(this.getParameters());
         Calculations comb = new Factorial(this.getParameters());
-        return (1 / comb.calc(this.getParameters().get(1))) * perm.calc();
+        getCalculations().add(perm);
+        getCalculations().add(comb);
+        return (1 / comb.calc(numAt(1))) * perm.calc();
     }
 
     @Override
-    Double calc(Double num) {
-        return null;
+    double calc(Double num) {
+        return -1;
     }
 
     @Override
     public String process() {
-        return "Computes " + this.getParameters().getFirst().intValue()
-                + "!" + "\n"
-                + "divided by ("
-                + this.getParameters().getFirst().intValue() + " - "
-                + this.getParameters().get(1).intValue() + ")!"
-                + "1 / " + this.getParameters().get(1) + "\n"
-                + this.calc();
+        return "Computes " + numAt(0)
+                + "! divided by ("
+                + numAt(0) + " - "
+                + numAt(1) + ")!" + "\n"
+                + "1 / " + numAt(1) + "! = "
+                + calc();
     }
 
     @Override
     public String explain() {
         return "nCr" + "\n" +
-                "Returns Permutation, the amount of combinations possible, with order mattering\n" +
+                "Returns Combinations, the amount of combinations possible, with order mattering\n" +
                 "n!/r!(n-r)!";
     }
 
     @Override
+    public String allCalc() {
+        StringBuilder s = new StringBuilder();
+        s.append("Full process: " + "\n");
+        for (int i = 0; i < 2; i++) {
+            s.append(getCalculations().get(i).process());
+            s.append("\n");
+        }
+        return s.toString();
+    }
+
+    @Override
     public String toString() {
-        return this.getParameters().getFirst().intValue() + "C" + this.getParameters().get(1).intValue()
+        return numAt(0) + "C" + numAt(1)
                 + " = " + calc();
     }
 }

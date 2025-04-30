@@ -9,7 +9,7 @@ public class BinomialPDF extends Calculations {
     }
 
     @Override
-    public Double calc() {
+    public double calc() {
         Calculations comb = new Combinations(this.getParameters());
         Double success = Math.pow(this.getParameters().get(2), this.getParameters().get(1));
         Double fail = Math.pow(1 - this.getParameters().get(2), this.getParameters().getFirst() - this.getParameters().get(1));
@@ -17,7 +17,7 @@ public class BinomialPDF extends Calculations {
     }
 
     @Override
-    Double calc(Double num) {
+    double calc(Double num) {
         return 0.0;
     }
 
@@ -29,6 +29,15 @@ public class BinomialPDF extends Calculations {
     @Override
     public String explain() {
         return "";
+    }
+
+    @Override
+    public String allCalc() {
+        StringBuilder s = new StringBuilder();
+        for (Calculations calc : getCalculations()) {
+            s.append(calc.process());
+        }
+        return s.toString();
     }
 
     @Override
