@@ -14,7 +14,7 @@ public class Permutations extends Calculations {
         Calculations denom = new Factorial(this.getParameters());
         this.getCalculations().add(numer);
         this.getCalculations().add(denom);
-        return numer.calc() / denom.calc(this.getParameters().getFirst() - this.getParameters().get(1));
+        return numer.calc() / denom.calc(numAt(0) - numAt(1));
     }
 
     @Override
@@ -25,15 +25,14 @@ public class Permutations extends Calculations {
     @Override
     public String process() {
         return "Computes "
-                + this.getParameters().getFirst().intValue() + "!" + "\n"
-                + "divided by ("
+                + numAt(0).intValue() + "! " + "divided by ("
                 + this.getParameters().getFirst().intValue() + " - "
-                + this.getParameters().get(1).intValue() + ")!\n"
+                + numAt(1).intValue() + ")! = "
                 + this.calc();
     }
 
     @Override
-    public String details() {
+    public String explain() {
         return "nPr" + "\n" +
                 "Returns Permutation, the amount of combinations possible, without order mattering\n" +
                 "n!/(n-r)!";

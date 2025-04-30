@@ -5,19 +5,21 @@ public class Factorial extends Calculations {
 
     public Factorial(List<Double> parameters) {
         super(parameters);
-        setParametersSize(1);
     }
 
     @Override
     public Double calc() {
-        if (this.getParameters().getFirst() == 0.0) {
+        if (numAt(0) == 0) {
             return 1.0;
         }
-        Double n = this.getParameters().getFirst();
-        for (double i = n - 1; i > 1; i--) {
+        if (numAt(0) % 1 != 0) {
+            return -1.0;
+        }
+        int n = numAt(0).intValue();
+        for (int i = n - 1; i > 1; i--) {
             n *= i;
         }
-        return n;
+        return (double) n;
     }
 
     @Override
@@ -25,11 +27,13 @@ public class Factorial extends Calculations {
         if (num == 0) {
             return 1.0;
         }
-        Double n = num;
-        for (double i = n - 1; i > 1; i--) {
+        int n = num.intValue();
+        for (int i = n - 1; i > 1; i--) {
             n *= i;
         }
-        return n;
+        setRawUse(true);
+        getParameters().add(num);
+        return (double) n;
     }
 
     @Override
@@ -37,8 +41,16 @@ public class Factorial extends Calculations {
         if (calc() == 1) {
             return "0! = 1";
         }
-        Integer n = this.getParameters().getFirst().intValue();
-        String s = n.toString();
+        if (calc() == -1) {
+            return "Cannot ! a non integer.";
+        }
+        int n;
+        if (isRawUse()) {
+            n = numAt(2).intValue();
+        } else {
+            n = numAt(0).intValue();
+        }
+        String s = Integer.toString(n);
         for (int i = n - 1; i > 0; i--) {
             s += " * " + i;
         }
@@ -46,7 +58,7 @@ public class Factorial extends Calculations {
     }
 
     @Override
-    public String details() {
+    public String explain() {
         return "n!" + "\n" +
                 "Multiplies n by n - 1, until n - 1 = 1. " +
                 "\n" +
@@ -55,6 +67,9 @@ public class Factorial extends Calculations {
 
     @Override
     public String toString() {
-        return this.getParameters().getFirst().intValue() + "! = " + calc();
+        if (isRawUse()) {
+            return numAt(2).intValue() + "! = " + calc(numAt(2));
+        }
+        return numAt(0).intValue() + "! = " + calc();
     }
 }

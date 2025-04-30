@@ -27,7 +27,7 @@ public class BinomialPDF extends Calculations {
     }
 
     @Override
-    public String details() {
+    public String explain() {
         return "";
     }
 

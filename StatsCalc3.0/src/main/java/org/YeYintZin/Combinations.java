@@ -35,7 +35,7 @@ public class Combinations extends Calculations {
     }
 
     @Override
-    public String details() {
+    public String explain() {
         return "nCr" + "\n" +
                 "Returns Permutation, the amount of combinations possible, with order mattering\n" +
                 "n!/r!(n-r)!";

@@ -23,6 +23,22 @@ public class mainTest {
     }
 
     @Test
+    public void testFactorialDecimal() {
+        List<Double> pars = new ArrayList<>();
+        pars.add(4.2);
+        Calculations fac = new Factorial(pars);
+        Assertions.assertEquals(-1.0, fac.calc());
+    }
+
+    @Test
+    public void testFactorialDecimalProcess() {
+        List<Double> pars = new ArrayList<>();
+        pars.add(4.2);
+        Calculations fac = new Factorial(pars);
+        Assertions.assertEquals("Cannot ! a non integer.", fac.process());
+    }
+
+    @Test
     public void testFactorialProcess() {
         List<Double> pars = new ArrayList<>();
         pars.add(5.0);
@@ -41,7 +57,7 @@ public class mainTest {
                 "Multiplies n by n - 1, until n - 1 = 1. " +
                 "\n" +
                 "No implementation of Gamma Function, only Integers.";
-        String result = fac.details();
+        String result = fac.explain();
         Assertions.assertEquals(expected, result);
     }
 }
