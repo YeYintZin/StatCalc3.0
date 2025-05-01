@@ -2,42 +2,49 @@ package org.YeYintZin;
 import java.util.*;
 
 public abstract class Calculations {
-    private List<Double> parameters;
+    private List<Double> pars;
     private List<Calculations> calculations = new ArrayList<>();
     private boolean rawUse = false;
 
     public abstract double calc();
-    abstract double calc(Double num);
+    // TODO
+    abstract double rawCalc(double num);
+    abstract boolean conditions();
     public abstract String process();
     public abstract String explain();
     public abstract String allCalc();
 
     public Calculations(List<Double> parameters) {
-        this.parameters = parameters;
+        this.pars = parameters;
     }
 
+    /**
+     * Finds a value in parameters
+     * @param idx The index
+     * @return The value at the index
+     */
     public double numAt(int idx) {
-        return parameters.get(idx);
+        return pars.get(idx);
     }
 
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Calculations that = (Calculations) o;
-        return Objects.equals(parameters, that.parameters);
+        return Objects.equals(pars, that.pars);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(parameters);
+        return Objects.hash(pars);
     }
 
-    public List<Double> getParameters() {
-        return parameters;
+    public List<Double> getPars() {
+        return pars;
     }
 
-    public void setParameters(List<Double> parameters) {
-        this.parameters = parameters;
+    public void setPars(List<Double> pars) {
+        this.pars = pars;
     }
 
     public List<Calculations> getCalculations() {
