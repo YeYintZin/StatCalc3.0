@@ -21,7 +21,7 @@ public class Permutations extends Calculations {
             return 0;
         }
         Calculations numerator = new Factorial(getPars());
-        getCalculations().add(numerator);
+        Calculations denominator = new Factorial(getPars());
         return numerator.calc() / numerator.rawCalc(numAt(0) - numAt(1));
     }
 
@@ -45,11 +45,14 @@ public class Permutations extends Calculations {
      */
     @Override
     public String process() {
+        if (conditions() || numAt(0) == 0) {
+            return "Error. Cannot calculate factorial of a non natural number.";
+        }
         return "Computes "
-                + numAt(0) + "! " + "divided by ("
+                + (int) numAt(0) + "! " + "divided by ("
                 + this.getPars().getFirst().intValue() + " - "
-                + numAt(1) + ")! = "
-                + this.calc();
+                + (int) numAt(1) + ")! = "
+                + (int) this.calc();
     }
 
     /**
@@ -71,7 +74,7 @@ public class Permutations extends Calculations {
     public String allCalc() {
         StringBuilder s = new StringBuilder();
         s.append("Full process: " + "\n");
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 1; i++) {
             s.append(getCalculations().get(i).process());
             s.append("\n");
         }

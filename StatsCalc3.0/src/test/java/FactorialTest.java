@@ -39,14 +39,6 @@ public class FactorialTest {
     }
 
     @Test
-    public void testFactorialProcessDecimal() {
-        List<Double> pars = new ArrayList<>();
-        pars.add(4.2);
-        Calculations fac = new Factorial(pars);
-        Assertions.assertEquals("Cannot ! a non natural number.", fac.process());
-    }
-
-    @Test
     public void testFactorialProcess() {
         List<Double> pars = new ArrayList<>();
         pars.add(5.0);
@@ -54,6 +46,23 @@ public class FactorialTest {
         String expected = "5 * 4 * 3 * 2 * 1 = 120";
         String result = fac.process();
         Assertions.assertEquals(expected, result);
+    }
+
+    @Test
+    public void testFactorialProcess0() {
+        List<Double> pars = new ArrayList<>();
+        pars.add(0.0);
+        Calculations fac = new Factorial(pars);
+        String expected = "0! = 1";
+        String result = fac.process();
+        Assertions.assertEquals(expected, result);
+    }
+    @Test
+    public void testFactorialProcessDecimal() {
+        List<Double> pars = new ArrayList<>();
+        pars.add(4.2);
+        Calculations fac = new Factorial(pars);
+        Assertions.assertEquals("Cannot ! a non natural number.", fac.process());
     }
 
     @Test
@@ -81,7 +90,6 @@ public class FactorialTest {
     public void testFactorialAllCalc() {
         List<Double> pars = new ArrayList<>();
         pars.add(5.0);
-        pars.add(2.0);
         Calculations fac = new Factorial(pars);
         String result = fac.allCalc();
         String expected = fac.process() + "\n";
