@@ -5,10 +5,11 @@ public abstract class Calculations {
     private List<Double> pars;
     private List<Calculations> calculations = new ArrayList<>();
     private boolean rawUse = false;
+    private double result;
 
-    public abstract double calc();
+    public abstract void calc();
     // TODO
-    abstract double rawCalc(double num);
+    public abstract void rawCalc(double num);
     abstract boolean conditions();
     public abstract String process();
     public abstract String explain();
@@ -61,5 +62,13 @@ public abstract class Calculations {
 
     public void setRawUse(boolean rawUse) {
         this.rawUse = rawUse;
+    }
+
+    public double getResult() {
+        return result;
+    }
+
+    public void setResult(double result) {
+        this.result = result;
     }
 }

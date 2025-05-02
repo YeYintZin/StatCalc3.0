@@ -9,11 +9,11 @@ public class BinomialPDF extends Calculations {
     }
 
     @Override
-    public double calc() {
+    public void calc() {
         Calculations comb = new Combinations(this.getPars());
         Double success = Math.pow(numAt(2), numAt(1));
         Double fail = Math.pow(1 - numAt(2), numAt(0) - numAt(1));
-        return comb.calc() * success * fail;
+        setResult(comb.getResult() * success * fail);
     }
 
     @Override
@@ -21,8 +21,8 @@ public class BinomialPDF extends Calculations {
         return false;
     }
 
-    double rawCalc(double num) {
-        return 1;
+    public void rawCalc(double num) {
+        return;
     }
 
     @Override
@@ -46,9 +46,9 @@ public class BinomialPDF extends Calculations {
 
     @Override
     public String toString() {
-        return "The probability of getting " + getPars().get(1).intValue()
-                + " successes at " + getPars().get(2) * 100 + "%"
-                + " in a total attempt of " + getPars().get(0).intValue()
-                + ": " + calc();
+        return "The probability of getting " + (int) numAt(1)
+                + " successes at " + (int) numAt(2) * 100 + "%"
+                + " in a total attempt of " + (int) numAt(0)
+                + ": " + getResult();
     }
 }

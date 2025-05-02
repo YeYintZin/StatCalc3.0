@@ -13,15 +13,16 @@ public class Combinations extends Calculations {
      * @return nCr, the amount of combinations, with order not mattering.
      */
     @Override
-    public double calc() {
+    public void calc() {
         if (conditions()) {
-            return -1;
+            setResult(-1);
         }
         Calculations perm = new Permutations(this.getPars());
         Calculations comb = new Factorial(this.getPars());
+        comb.rawCalc(numAt(1));
         getCalculations().add(perm);
         getCalculations().add(comb);
-        return (1 / comb.rawCalc(numAt(1))) * perm.calc();
+        setResult((1 / comb.getResult()) * perm.getResult());
     }
 
     @Override
@@ -32,8 +33,8 @@ public class Combinations extends Calculations {
                 numAt(1) % 1 != 0;
     }
 
-    double rawCalc(double num) {
-        return -1;
+    public void rawCalc(double num) {
+        return;
     }
 
     /**
@@ -47,7 +48,7 @@ public class Combinations extends Calculations {
                 + numAt(0) + " - "
                 + numAt(1) + ")!" + "\n"
                 + "1 / " + numAt(1) + "! = "
-                + calc();
+                + getResult();
     }
 
     @Override
@@ -75,6 +76,6 @@ public class Combinations extends Calculations {
     @Override
     public String toString() {
         return numAt(0) + "C" + numAt(1)
-                + " = " + calc();
+                + " = " + getResult();
     }
 }

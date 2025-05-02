@@ -13,16 +13,22 @@ public class Permutations extends Calculations {
      * @return nPr, the amount of combinations possible, with order mattering.
      */
     @Override
-    public double calc() {
-        if (conditions()) {
-            return -1;
-        }
+    public void calc() {
         if (numAt(0) == 0) {
-            return 0;
+            setResult(0);
+            return;
+    }
+        if (conditions()) {
+            setResult(-1);
+            return;
         }
         Calculations numerator = new Factorial(getPars());
+        numerator.calc();
         Calculations denominator = new Factorial(getPars());
-        return numerator.calc() / numerator.rawCalc(numAt(0) - numAt(1));
+        denominator.rawCalc(numAt(0) - numAt(1));
+        getCalculations().add(numerator);
+        getCalculations().add(denominator);
+        setResult(numerator.getResult() / denominator.getResult());
     }
 
     @Override
@@ -35,8 +41,8 @@ public class Permutations extends Calculations {
 
     // TODO
     @Override
-    double rawCalc(double num) {
-        return -1;
+    public void rawCalc(double num) {
+        return;
     }
 
     /**
@@ -52,7 +58,7 @@ public class Permutations extends Calculations {
                 + (int) numAt(0) + "! " + "divided by ("
                 + this.getPars().getFirst().intValue() + " - "
                 + (int) numAt(1) + ")! = "
-                + (int) this.calc();
+                + (int) getResult();
     }
 
     /**
@@ -74,16 +80,17 @@ public class Permutations extends Calculations {
     public String allCalc() {
         StringBuilder s = new StringBuilder();
         s.append("Full process: " + "\n");
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 2; i++) {
             s.append(getCalculations().get(i).process());
             s.append("\n");
         }
+        s.append(process());
         return s.toString();
     }
 
     @Override
     public String toString() {
         return numAt(0) + "P" + numAt(1)
-                + " = " + calc();
+                + " = " + getResult();
     }
 }

@@ -12,18 +12,20 @@ public class Factorial extends Calculations {
      * @return n!
      */
     @Override
-    public double calc() {
+    public void calc() {
         if (numAt(0) == 0) {
-            return 1;
+            setResult(1);
+            return;
         }
         if (conditions()) {
-            return -1;
+            setResult(-1);
+            return;
         }
         double result = numAt(0);
         for (double i = result - 1; i > 1; i--) {
             result *= i;
         }
-        return result;
+        setResult(result);
     }
 
     @Override
@@ -37,12 +39,14 @@ public class Factorial extends Calculations {
      * @return num!
      */
     @Override
-    double rawCalc(double num) {
+    public void rawCalc(double num) {
         if (num == 0) {
-            return 1;
+            setResult(1);
+            return;
         }
         if (conditions()) {
-            return -1;
+            setResult(-1);
+            return;
         }
         int result = (int) num;
         for (int i = result - 1; i > 1; i--) {
@@ -50,7 +54,7 @@ public class Factorial extends Calculations {
         }
         setRawUse(true);
         getPars().add(num);
-        return result;
+        setResult(result);
     }
 
     /**
@@ -59,27 +63,25 @@ public class Factorial extends Calculations {
      */
     @Override
     public String process() {
-        if (calc() == 1) {
+        if (getResult() == 1) {
             return "0! = 1";
         }
-        if (calc() == -1) {
+        if (getResult() == -1) {
             return "Cannot ! a non natural number.";
         }
         int num;
-        double result;
         if (isRawUse()) {
-            num = (int) numAt(2);
-            result = rawCalc(numAt(2));
+            num = (int) numAt(1);
+            rawCalc(num);
         } else {
             num = (int) numAt(0);
-            result = calc();
         }
         StringBuilder s = new StringBuilder();
         s.append(num);
         for (int i = num - 1; i > 0; i--) {
             s.append(" * ").append(i);
         }
-        return s + " = " + (int) result;
+        return s + " = " + (int) getResult();
     }
 
     /**
@@ -106,8 +108,8 @@ public class Factorial extends Calculations {
     @Override
     public String toString() {
         if (isRawUse()) {
-            return numAt(2) + "! = " + rawCalc(numAt(2));
+            return numAt(1) + "! = " + getResult();
         }
-        return numAt(0) + "! = " + calc();
+        return numAt(0) + "! = " + getResult();
     }
 }
