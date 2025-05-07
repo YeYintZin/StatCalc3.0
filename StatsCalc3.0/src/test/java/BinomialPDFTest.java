@@ -1,5 +1,5 @@
 import org.YeYintZin.BinomialPDF;
-import org.YeYintZin.Calculations;
+import org.YeYintZin.Calculation;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.util.*;
@@ -14,7 +14,7 @@ public class BinomialPDFTest {
         pars.add(10.0);
         pars.add(2.0);
         pars.add(0.3);
-        Calculations bpdf = new BinomialPDF(pars);
+        Calculation bpdf = new BinomialPDF(pars);
         bpdf.calc();
         Assertions.assertEquals(0.23347444049999988, bpdf.getResult());
     }
@@ -25,7 +25,7 @@ public class BinomialPDFTest {
         pars.add(0.0);
         pars.add(0.0);
         pars.add(0.3);
-        Calculations bpdf = new BinomialPDF(pars);
+        Calculation bpdf = new BinomialPDF(pars);
         bpdf.calc();
         Assertions.assertEquals(0, bpdf.getResult());
     }
@@ -36,7 +36,7 @@ public class BinomialPDFTest {
         pars.add(-10.0);
         pars.add(-10.0);
         pars.add(0.3);
-        Calculations bpdf = new BinomialPDF(pars);
+        Calculation bpdf = new BinomialPDF(pars);
         bpdf.calc();
         Assertions.assertEquals(-1, bpdf.getResult());
     }
@@ -47,7 +47,7 @@ public class BinomialPDFTest {
         pars.add(10.1);
         pars.add(2.0);
         pars.add(0.3);
-        Calculations bpdf = new BinomialPDF(pars);
+        Calculation bpdf = new BinomialPDF(pars);
         bpdf.calc();
         Assertions.assertEquals(-1, bpdf.getResult());
     }
@@ -58,7 +58,7 @@ public class BinomialPDFTest {
         pars.add(10.0);
         pars.add(2.1);
         pars.add(0.3);
-        Calculations bpdf = new BinomialPDF(pars);
+        Calculation bpdf = new BinomialPDF(pars);
         bpdf.calc();
         Assertions.assertEquals(-1, bpdf.getResult());
     }
@@ -69,7 +69,7 @@ public class BinomialPDFTest {
         pars.add(10.0);
         pars.add(-2.0);
         pars.add(0.3);
-        Calculations bpdf = new BinomialPDF(pars);
+        Calculation bpdf = new BinomialPDF(pars);
         bpdf.calc();
         Assertions.assertEquals(-1, bpdf.getResult());
     }
@@ -80,7 +80,7 @@ public class BinomialPDFTest {
         pars.add(2.0);
         pars.add(10.0);
         pars.add(0.3);
-        Calculations bpdf = new BinomialPDF(pars);
+        Calculation bpdf = new BinomialPDF(pars);
         bpdf.calc();
         Assertions.assertEquals(-1, bpdf.getResult());
     }
@@ -91,7 +91,7 @@ public class BinomialPDFTest {
         pars.add(10.0);
         pars.add(2.0);
         pars.add(1.4);
-        Calculations bpdf = new BinomialPDF(pars);
+        Calculation bpdf = new BinomialPDF(pars);
         bpdf.calc();
         Assertions.assertEquals(-1, bpdf.getResult());
     }
@@ -102,7 +102,7 @@ public class BinomialPDFTest {
         pars.add(10.0);
         pars.add(2.0);
         pars.add(-0.02);
-        Calculations bpdf = new BinomialPDF(pars);
+        Calculation bpdf = new BinomialPDF(pars);
         bpdf.calc();
         Assertions.assertEquals(-1, bpdf.getResult());
     }

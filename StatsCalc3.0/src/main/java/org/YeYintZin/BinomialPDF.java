@@ -2,7 +2,7 @@ package org.YeYintZin;
 
 import java.util.List;
 
-public class BinomialPDF extends Calculations {
+public class BinomialPDF extends Calculation {
 
     public BinomialPDF(List<Double> parameters) {
         super(parameters);
@@ -10,11 +10,11 @@ public class BinomialPDF extends Calculations {
 
     @Override
     public void calc() {
-        if (conditions()) {
+        if (isValid()) {
             setResult(-1);
             return;
         }
-        Calculations comb = new Combinations(getPars());
+        Calculation comb = new Combinations(getPars());
         comb.calc();
         double success = Math.pow(numAt(2), numAt(1));
         double fail = Math.pow(1 - numAt(2), numAt(0) - numAt(1));
@@ -22,7 +22,7 @@ public class BinomialPDF extends Calculations {
     }
 
     @Override
-    boolean conditions() {
+    boolean isValid() {
         return
                 numAt(0) % 1 != 0 ||
                 numAt(0) < 0 ||
@@ -50,7 +50,7 @@ public class BinomialPDF extends Calculations {
     @Override
     public String allCalc() {
         StringBuilder s = new StringBuilder();
-        for (Calculations calc : getCalculations()) {
+        for (Calculation calc : getCalculation()) {
             s.append(calc.process());
         }
         return s.toString();

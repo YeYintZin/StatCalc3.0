@@ -1,15 +1,15 @@
 package org.YeYintZin;
 import java.util.*;
 
-public class Factorial extends Calculations {
+public class Factorial extends Calculation {
 
     public Factorial(List<Double> pars) {
         super(pars);
     }
 
     /**
-     * Calculates the factorial of an integer, it being the first value in parameters
-     * @return n!
+     * Calculates the factorial of an integer,
+     * it being the first value in parameters
      */
     @Override
     public void calc() {
@@ -17,7 +17,7 @@ public class Factorial extends Calculations {
             setResult(1);
             return;
         }
-        if (conditions()) {
+        if (isValid()) {
             setResult(-1);
             return;
         }
@@ -29,14 +29,13 @@ public class Factorial extends Calculations {
     }
 
     @Override
-    boolean conditions() {
+    boolean isValid() {
         return numAt(0) < 0 || numAt(0) % 1 != 0;
     }
 
     /**
      * Uses calc() but with a parameter instead of the field pars
      * @param num The parameter
-     * @return num!
      */
     @Override
     public void rawCalc(double num) {
@@ -44,7 +43,7 @@ public class Factorial extends Calculations {
             setResult(1);
             return;
         }
-        if (conditions()) {
+        if (isValid()) {
             setResult(-1);
             return;
         }

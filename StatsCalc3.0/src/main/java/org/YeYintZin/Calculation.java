@@ -1,21 +1,21 @@
 package org.YeYintZin;
 import java.util.*;
 
-public abstract class Calculations {
-    private List<Double> pars;
-    private List<Calculations> calculations = new ArrayList<>();
-    private boolean rawUse = false;
-    private double result;
+public abstract class Calculation {
+    protected List<Double> pars;
+    protected List<Calculation> calculations = new ArrayList<>();
+    protected boolean rawUse = false;
+    protected double result;
 
     public abstract void calc();
-    // TODO
+    // TODO: MERGE THE CALCS
     public abstract void rawCalc(double num);
-    abstract boolean conditions();
+    abstract boolean isValid();
     public abstract String process();
     public abstract String explain();
     public abstract String allCalc();
 
-    public Calculations(List<Double> parameters) {
+    public Calculation(List<Double> parameters) {
         this.pars = parameters;
     }
 
@@ -31,7 +31,7 @@ public abstract class Calculations {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        Calculations that = (Calculations) o;
+        Calculation that = (Calculation) o;
         return Objects.equals(pars, that.pars);
     }
 
@@ -48,12 +48,12 @@ public abstract class Calculations {
         this.pars = pars;
     }
 
-    public List<Calculations> getCalculations() {
+    public List<Calculation> getCalculation() {
         return calculations;
     }
 
-    public void setCalculations(List<Calculations> calculations) {
-        this.calculations = calculations;
+    public void setCalculation(List<Calculation> Calculation) {
+        this.calculations = Calculation;
     }
 
     public boolean isRawUse() {
