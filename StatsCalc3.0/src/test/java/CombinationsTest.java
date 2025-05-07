@@ -12,6 +12,7 @@ public class CombinationsTest {
         pars.add(5.0);
         pars.add(2.0);
         Calculations combinations = new Combinations(pars);
+        combinations.calc();
         Assertions.assertEquals(10, combinations.getResult());
     }
 
@@ -21,6 +22,7 @@ public class CombinationsTest {
         pars.add(5.0);
         pars.add(0.0);
         Calculations combinations = new Combinations(pars);
+        combinations.calc();
         Assertions.assertEquals(1, combinations.getResult());
     }
 
@@ -30,6 +32,7 @@ public class CombinationsTest {
         pars.add(0.0);
         pars.add(1.0);
         Calculations combinations = new Combinations(pars);
+        combinations.calc();
         Assertions.assertEquals(0, combinations.getResult());
     }
 
@@ -39,6 +42,7 @@ public class CombinationsTest {
         pars.add(5.1);
         pars.add(2.0);
         Calculations combinations = new Combinations(pars);
+        combinations.calc();
         Assertions.assertEquals(-1, combinations.getResult());
     }
 
@@ -48,6 +52,7 @@ public class CombinationsTest {
         pars.add(5.0);
         pars.add(-2.0);
         Calculations combinations = new Combinations(pars);
+        combinations.calc();
         Assertions.assertEquals(-1, combinations.getResult());
     }
 }

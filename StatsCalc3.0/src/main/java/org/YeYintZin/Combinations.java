@@ -16,9 +16,11 @@ public class Combinations extends Calculations {
     public void calc() {
         if (conditions()) {
             setResult(-1);
+            return;
         }
-        Calculations perm = new Permutations(this.getPars());
-        Calculations comb = new Factorial(this.getPars());
+        Calculations perm = new Permutations(getPars());
+        perm.calc();
+        Calculations comb = new Factorial(getPars());
         comb.rawCalc(numAt(1));
         getCalculations().add(perm);
         getCalculations().add(comb);

@@ -10,15 +10,27 @@ public class BinomialPDF extends Calculations {
 
     @Override
     public void calc() {
-        Calculations comb = new Combinations(this.getPars());
-        Double success = Math.pow(numAt(2), numAt(1));
-        Double fail = Math.pow(1 - numAt(2), numAt(0) - numAt(1));
+        if (conditions()) {
+            setResult(-1);
+            return;
+        }
+        Calculations comb = new Combinations(getPars());
+        comb.calc();
+        double success = Math.pow(numAt(2), numAt(1));
+        double fail = Math.pow(1 - numAt(2), numAt(0) - numAt(1));
         setResult(comb.getResult() * success * fail);
     }
 
     @Override
     boolean conditions() {
-        return false;
+        return
+                numAt(0) % 1 != 0 ||
+                numAt(0) < 0 ||
+                numAt(1) < 0 ||
+                numAt(1) % 1 != 0 ||
+                numAt(1) > numAt(0) ||
+                numAt(2) > 1 ||
+                numAt(2) < 0;
     }
 
     public void rawCalc(double num) {
